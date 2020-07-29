@@ -1,56 +1,44 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import { css } from '@emotion/core'
 
 import Layout from '../components/Layout'
-import Features from '../components/Features'
-import BlogRoll from '../components/BlogRoll'
+import MediaRoll from '../components/MediaRoll'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+
+const main = css`
+  padding: 0.25em;
+  margin: 25px;
+`
 
 export const IndexPageTemplate = ({
   image,
-  title,
-  heading,
-  subheading,
-  bio
+  bio,
 }) => (
-  <div>
-    <div
-      style={{
-        display: 'flex',
-        height: '150px',
-        lineHeight: '1',
-        justifyContent: 'space-around',
-        alignItems: 'left',
-        flexDirection: 'column',
-      }}
-    >
-      <h1
-        className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-        style={{
-          boxShadow:
-            'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-          backgroundColor: 'rgb(255, 68, 0)',
-          color: 'white',
-          lineHeight: '1',
-          padding: '0.25em',
-        }}
-      >
-        {title}
-      </h1>
-      <h3
-        className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-        style={{
-          boxShadow:
-            'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-          backgroundColor: 'rgb(255, 68, 0)',
-          color: 'white',
-          lineHeight: '1',
-          padding: '0.25em',
-        }}
-      >
-        {subheading}
-      </h3>
+  <div css={main}>
+    <h1 className="is-size-3-mobile is-size-2-tablet is-size-1-widescreen">
+      KEITH MINES
+    </h1>
+    <hr/>
+    <div className="columns">
+      <div className="column is-one-quarter">
+        <PreviewCompatibleImage
+          imageInfo={{
+            image: image,
+            alt: `featured img`,
+          }}
+        />
+      </div>
+      <div className="column">
+        <h2 className="is-size-2-mobile is-size-2-tablet is-size-4-widescreen">
+          Bio
+        </h2>
+        <p>{bio.description}</p>
+      </div>
     </div>
+    <hr/>
+    <MediaRoll />
   </div>
 )
 
@@ -60,11 +48,13 @@ IndexPageTemplate.propTypes = {
   heading: PropTypes.string,
   subheading: PropTypes.string,
   bio: PropTypes.object,
+  media: PropTypes.object,
+  publications: PropTypes.object
 }
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
-
+  console.log(frontmatter)
   return (
     <Layout>
       <IndexPageTemplate
@@ -73,6 +63,8 @@ const IndexPage = ({ data }) => {
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
         bio={frontmatter.bio}
+        media={frontmatter.media}
+        publications={frontmatter.publications}
       />
     </Layout>
   )

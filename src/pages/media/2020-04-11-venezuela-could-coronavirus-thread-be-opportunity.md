@@ -1,10 +1,12 @@
 ---
-templateKey: blog-post
+templateKey: media-post
 title: Venezuela - Could the Coronavirus Threat Be an Opportunity?
-date: 2016-12-17T15:04:10.000Z
+date: 2020-04-11T15:04:10.000Z
 featuredpost: true
-featuredimage: /img/venezuela-covid.jpg
-description: A truce in the decade-long power struggle is urgent to fight COVID—and could open a path to the nation’s revival.
+description: Coauthored Article for Small Wars Journal
+category: Foreign Policy
+link: https://smallwarsjournal.com/jrnl/art/venezuela-could-coronavirus-threat-be-opportunity
+publishedat: Small Wars Journal
 tags:
   - venezuela
   - covid
